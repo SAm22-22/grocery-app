@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FreshCart - Premium online grocery store. Browse fresh fruits, vegetables, dairy, bakery items and more. Fast delivery to your door.">
+  <title>FreshCart — Fresh Groceries, Delivered</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛒</text></svg>">
+</head>
+<body>
+  <!-- Toast container -->
+  <div id="toast-container"></div>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <div class="logo" id="logo">
+        <span class="logo-icon">🛒</span>
+        <span class="logo-text">Fresh<span class="logo-accent">Cart</span></span>
+      </div>
+      <div class="search-bar" id="search-bar">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="search-input" placeholder="Search for groceries..." autocomplete="off">
+        <kbd class="search-kbd">⌘K</kbd>
+      </div>
+      <div class="header-actions">
+        <button class="btn-icon" id="orders-btn" title="My Orders">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>
+        </button>
+        <button class="cart-btn" id="cart-btn" title="Shopping Cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="cart-badge" id="cart-badge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero-section">
+    <div class="hero-content">
+      <div class="hero-badge">🌿 Farm Fresh Daily</div>
+      <h1 class="hero-title">Fresh Groceries<br><span class="hero-gradient">Delivered to You</span></h1>
+      <p class="hero-subtitle">Premium quality produce, dairy, bakery items and more — delivered in 30-60 minutes.</p>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-value">36+</span><span class="stat-label">Products</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-value">30min</span><span class="stat-label">Delivery</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-value">$25+</span><span class="stat-label">Free Delivery</span></div>
+      </div>
+      <button class="hero-cta" id="shop-now-btn">
+        Shop Now
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-emoji-grid">
+        <span class="hero-float" style="--delay:0s;--x:-10px;--y:10px">🍎</span>
+        <span class="hero-float" style="--delay:0.5s;--x:15px;--y:-8px">🥬</span>
+        <span class="hero-float" style="--delay:1s;--x:-5px;--y:12px">🥛</span>
+        <span class="hero-float" style="--delay:1.5s;--x:10px;--y:-15px">🍞</span>
+        <span class="hero-float" style="--delay:2s;--x:-12px;--y:5px">🍇</span>
+        <span class="hero-float" style="--delay:0.3s;--x:8px;--y:-10px">🧀</span>
+        <span class="hero-float" style="--delay:0.8s;--x:-8px;--y:8px">🥕</span>
+        <span class="hero-float" style="--delay:1.3s;--x:12px;--y:-5px">☕</span>
+        <span class="hero-float" style="--delay:1.8s;--x:-15px;--y:10px">🥚</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="categories-section" id="categories-section">
+    <div class="section-header">
+      <h2 class="section-title">Shop by Category</h2>
+    </div>
+    <div class="categories-scroll" id="categories-container">
+      <button class="category-chip active" data-category="all" id="cat-all">
+        <span class="chip-icon">🛒</span>
+        <span class="chip-label">All</span>
+      </button>
+      <button class="category-chip" data-category="fruits" id="cat-fruits">
+        <span class="chip-icon">🍎</span>
+        <span class="chip-label">Fruits</span>
+      </button>
+      <button class="category-chip" data-category="vegetables" id="cat-vegetables">
+        <span class="chip-icon">🥬</span>
+        <span class="chip-label">Vegetables</span>
+      </button>
+      <button class="category-chip" data-category="dairy" id="cat-dairy">
+        <span class="chip-icon">🥛</span>
+        <span class="chip-label">Dairy & Eggs</span>
+      </button>
+      <button class="category-chip" data-category="bakery" id="cat-bakery">
+        <span class="chip-icon">🍞</span>
+        <span class="chip-label">Bakery</span>
+      </button>
+      <button class="category-chip" data-category="beverages" id="cat-beverages">
+        <span class="chip-icon">☕</span>
+        <span class="chip-label">Beverages</span>
+      </button>
+      <button class="category-chip" data-category="snacks" id="cat-snacks">
+        <span class="chip-icon">🥜</span>
+        <span class="chip-label">Snacks & Pantry</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Sort Bar -->
+  <section class="sort-section">
+    <div class="sort-bar">
+      <span class="results-count" id="results-count">36 Products</span>
+      <div class="sort-controls">
+        <select id="sort-select" class="sort-select">
+          <option value="">Sort By</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="rating">Top Rated</option>
+          <option value="name">Name A-Z</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Grid -->
+  <main class="products-section" id="products-section">
+    <div class="products-grid" id="products-grid">
+      <!-- Products will be rendered here -->
+    </div>
+    <div class="empty-state" id="empty-state" style="display:none;">
+      <span class="empty-icon">🔍</span>
+      <h3>No products found</h3>
+      <p>Try adjusting your search or filters.</p>
+      <button class="btn-secondary" id="clear-filters-btn">Clear Filters</button>
+    </div>
+  </main>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-overlay" id="cart-overlay"></div>
+  <aside class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">
+      <h2 class="cart-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        Shopping Cart
+      </h2>
+      <button class="btn-close" id="cart-close-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <div class="cart-body" id="cart-body">
+      <div class="cart-empty" id="cart-empty">
+        <span class="cart-empty-icon">🛒</span>
+        <h3>Your cart is empty</h3>
+        <p>Start adding fresh groceries!</p>
+      </div>
+      <div class="cart-items" id="cart-items"></div>
+    </div>
+
+    <div class="cart-footer" id="cart-footer" style="display:none;">
+      <div class="delivery-notice" id="delivery-notice"></div>
+      <div class="cart-totals">
+        <div class="total-row"><span>Subtotal</span><span id="cart-subtotal">$0.00</span></div>
+        <div class="total-row"><span>Delivery</span><span id="cart-delivery">$4.99</span></div>
+        <div class="total-row"><span>Tax (8%)</span><span id="cart-tax">$0.00</span></div>
+        <div class="total-row total-final"><span>Total</span><span id="cart-total">$0.00</span></div>
+      </div>
+      <button class="checkout-btn" id="checkout-btn">
+        Proceed to Checkout
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+      <button class="clear-cart-btn" id="clear-cart-btn">Clear Cart</button>
+    </div>
+  </aside>
+
+  <!-- Checkout Modal -->
+  <div class="modal-overlay" id="checkout-overlay" style="display:none;">
+    <div class="modal checkout-modal" id="checkout-modal">
+      <div class="modal-header">
+        <h2>Checkout</h2>
+        <button class="btn-close" id="checkout-close-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="checkout-form">
+          <div class="form-section">
+            <h3 class="form-section-title">📦 Delivery Details</h3>
+            <div class="form-group">
+              <label for="customer-name">Full Name</label>
+              <input type="text" id="customer-name" placeholder="John Doe" required>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="customer-email">Email</label>
+                <input type="email" id="customer-email" placeholder="john@email.com" required>
+              </div>
+              <div class="form-group">
+                <label for="customer-phone">Phone</label>
+                <input type="tel" id="customer-phone" placeholder="+1 234 567 890">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="customer-address">Delivery Address</label>
+              <textarea id="customer-address" placeholder="123 Main St, Apt 4B, City, State 12345" rows="3" required></textarea>
+            </div>
+          </div>
+          <div class="form-section">
+            <h3 class="form-section-title">💳 Payment Method</h3>
+            <div class="payment-options">
+              <label class="payment-option active">
+                <input type="radio" name="payment" value="cash" checked>
+                <div class="payment-card">
+                  <span class="payment-icon">💵</span>
+                  <span>Cash on Delivery</span>
+                </div>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="payment" value="card">
+                <div class="payment-card">
+                  <span class="payment-icon">💳</span>
+                  <span>Credit Card</span>
+                </div>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="payment" value="upi">
+                <div class="payment-card">
+                  <span class="payment-icon">📱</span>
+                  <span>UPI / Digital</span>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div class="order-summary-mini">
+            <h3 class="form-section-title">🧾 Order Summary</h3>
+            <div id="checkout-summary-items"></div>
+            <div class="checkout-totals">
+              <div class="total-row"><span>Subtotal</span><span id="co-subtotal">$0.00</span></div>
+              <div class="total-row"><span>Delivery</span><span id="co-delivery">$0.00</span></div>
+              <div class="total-row"><span>Tax</span><span id="co-tax">$0.00</span></div>
+              <div class="total-row total-final"><span>Total</span><span id="co-total">$0.00</span></div>
+            </div>
+          </div>
+          <button type="submit" class="place-order-btn" id="place-order-btn">
+            🛒 Place Order
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Order Confirmation Modal -->
+  <div class="modal-overlay" id="order-confirmation-overlay" style="display:none;">
+    <div class="modal confirmation-modal" id="order-confirmation-modal">
+      <div class="confirmation-content">
+        <div class="confirmation-animation">
+          <div class="checkmark-circle">
+            <svg viewBox="0 0 52 52" class="checkmark-svg"><circle cx="26" cy="26" r="25" fill="none"/><path fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
+          </div>
+        </div>
+        <h2 class="confirmation-title">Order Confirmed! 🎉</h2>
+        <p class="confirmation-subtitle">Your fresh groceries are on the way</p>
+        <div class="order-details" id="order-details"></div>
+        <button class="btn-primary" id="continue-shopping-btn">Continue Shopping</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Orders Modal -->
+  <div class="modal-overlay" id="orders-overlay" style="display:none;">
+    <div class="modal orders-modal" id="orders-modal">
+      <div class="modal-header">
+        <h2>📋 My Orders</h2>
+        <button class="btn-close" id="orders-close-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="modal-body" id="orders-list">
+        <div class="cart-empty">
+          <span class="cart-empty-icon">📋</span>
+          <h3>No orders yet</h3>
+          <p>Place your first order!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-icon">🛒</span>
+        <span class="logo-text">Fresh<span class="logo-accent">Cart</span></span>
+        <p class="footer-tagline">Premium groceries, delivered fresh.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <a href="#" onclick="filterCategory('fruits'); return false;">Fruits</a>
+          <a href="#" onclick="filterCategory('vegetables'); return false;">Vegetables</a>
+          <a href="#" onclick="filterCategory('dairy'); return false;">Dairy & Eggs</a>
+          <a href="#" onclick="filterCategory('bakery'); return false;">Bakery</a>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="#">Help Center</a>
+          <a href="#">Delivery Info</a>
+          <a href="#">Returns</a>
+          <a href="#">Contact Us</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#">About Us</a>
+          <a href="#">Careers</a>
+          <a href="#">Blog</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 FreshCart. Made with 💚 for fresh food lovers.</p>
+    </div>
+  </footer>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
